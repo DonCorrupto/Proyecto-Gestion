@@ -26,6 +26,8 @@ const getAvance = id => db.collection('Avance').doc(id).get();
 
 const getComentary = () => db.collection('Comentario').get();
 const onGetDataNombre = (callback) => db.collection("Usuario").onSnapshot(callback);
+const onGetDataComentary = (callback) => db.collection("Comentario").onSnapshot(callback);
+const ComentarioPaginaRetos = document.getElementById('Comentario');
 
 window.addEventListener("DOMContentLoaded", async (e) => {
   onGetDataReto((querySnapshot) => {
@@ -90,9 +92,9 @@ window.addEventListener("DOMContentLoaded", async (e) => {
           <div class="secciones">
             <div class="info-reto">
                 <h2>${data.nombre}</h2>
-                <p>${data.descripcion}</p>
                 <p>Lider del Proyecto: ${data.representante}</p>
                 <p>Institución o Empresa: ${data.institucion}</p>
+                <p>${data.descripcion}</p>
                 <a href="${data.urlPdf}" target="_blank">Archivo PDF</a>
             </div>
             <div>
@@ -117,6 +119,23 @@ window.addEventListener("DOMContentLoaded", async (e) => {
           })
         })
 
+        //Visualizacion de Comentarios
+        onGetDataComentary((querySnapshotComentary) => {
+          ComentarioPaginaRetos.innerHTML = '';
+          querySnapshotComentary.forEach((docComentary) => {
+            const dataCom = docComentary.data();
+            dataCom.id = docComentary.id;
+            var ComRetoId = JSON.parse(localStorage.getItem("reto"))
+            if (ComRetoId == docComentary.data().ComReto) {
+              ComentarioPaginaRetos.innerHTML +=`
+              <div>
+                <h4>${dataCom.idNombre}</h4>
+                <p>${dataCom.comentary}</p>
+              </div>`;
+            }
+          })
+        })
+
         onGetDataSolucion((querySnapshotSolucion) => {
           querySnapshotSolucion.forEach((docSolucion) => {
             const dataSol = docSolucion.data();
@@ -125,7 +144,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
               var SolucionBloque = `
               <hr>
               <div id="Sol-${dataSol.id}">
-                <h5>${dataSol.nombre}</h5>
+                <h4>${dataSol.nombre}</h4>
                 <p>${dataSol.descripcion}</p>
                 <a class="nav-link titleslink" href="${docSolucion.data().urlPdf}">PDF de la solución</a>
                 <br>
@@ -155,7 +174,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
               var AvanceBloque = `
               <hr>
               <div>
-                <h5>Avance ${dataAvan.numero}</h5> 
+                <h4>Avance ${dataAvan.numero}</h4> 
                 <a class="nav-link titleslink" href="${docAvance.data().urlPdf}">PDF del Avance</a>
                 <br>
                 <button class="btn btn-light btn-borrarAvance" data-id="${dataAvan.id}">Borrar Avance</button>
@@ -254,6 +273,23 @@ window.addEventListener("DOMContentLoaded", async (e) => {
           })
         })
 
+        //Visualizacion de Comentarios
+        onGetDataComentary((querySnapshotComentary) => {
+          ComentarioPaginaRetos.innerHTML = '';
+          querySnapshotComentary.forEach((docComentary) => {
+            const dataCom = docComentary.data();
+            dataCom.id = docComentary.id;
+            var ComRetoId = JSON.parse(localStorage.getItem("reto"))
+            if (ComRetoId == docComentary.data().ComReto) {
+              ComentarioPaginaRetos.innerHTML +=`
+              <div>
+                <h4>${dataCom.idNombre}</h4>
+                <p>${dataCom.comentary}</p>
+              </div>`;
+            }
+          })
+        })
+
         onGetDataSolucion((querySnapshotSolucion) => {
           querySnapshotSolucion.forEach((docSolucion) => {
             const dataSol = docSolucion.data();
@@ -262,7 +298,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
               var SolucionBloque = `
               <hr>
               <div id="Sol-${dataSol.id}">
-                <h5>${dataSol.nombre}</h5>
+                <h4>${dataSol.nombre}</h4>
                 <p>${dataSol.descripcion}</p>
                 <a class="nav-link titleslink" href="${docSolucion.data().urlPdf}">PDF de la solución</a>
                 <br>
@@ -290,7 +326,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
               var AvanceBloque = `
               <hr>
               <div>
-                <h5>Avance ${dataAvan.numero}</h5> 
+                <h4>Avance ${dataAvan.numero}</h4> 
                 <a class="nav-link titleslink" href="${docAvance.data().urlPdf}">PDF del Avance</a>
                 <br>
               </div>`;
@@ -632,10 +668,9 @@ async function subirsolucion() {
   }
 }
 
-// Se sube los comentarios, FALTA MOSTRARLOS Y VINCULARLOS CON EL RETO. PENSAR SI SE HACE EL BOTON DE BORRAR
 async function commentBox(){
   var idNombre = JSON.parse(localStorage.getItem("nomUsuario"))
-  var comentary = document.getElementById("Comentario").value
+  var comentary = document.getElementById("comentary").value
   var ComReto = JSON.parse(localStorage.getItem("reto"))
 
   if (comentary.length == 0) {
@@ -644,8 +679,9 @@ async function commentBox(){
     db.collection("Comentario").doc().set({
       idNombre, comentary, ComReto 
     })
-    console.log("Funciona");
-
+    setTimeout(() => {
+      location.reload()
+    }, 1000);
   }
 
 }
