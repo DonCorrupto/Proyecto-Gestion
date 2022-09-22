@@ -24,6 +24,8 @@ const getsAvance = () => db.collection("Avance").get();
 const deleteAvance = id => db.collection('Avance').doc(id).delete();
 const getAvance = id => db.collection('Avance').doc(id).get();
 
+const getComentary = () => db.collection('Comentario').get();
+const onGetDataNombre = (callback) => db.collection("Usuario").onSnapshot(callback);
 
 window.addEventListener("DOMContentLoaded", async (e) => {
   onGetDataReto((querySnapshot) => {
@@ -495,6 +497,14 @@ async function btniniciarSesion(){
     //alert("Inicio de Sesión con exito");
 
     localStorage.setItem("usuario", JSON.stringify(user.uid));
+    onGetDataNombre((querySnapshotNombre) => {
+      querySnapshotNombre.forEach((docNombre) => {
+        const dataNom = docNombre.data();
+        if (user.uid == docNombre.id) {
+          localStorage.setItem("nomUsuario", JSON.stringify(dataNom.nombreUser));
+        }
+      })
+    })
     swal("Bienvenido!", "Inicio de sesión con exito!", "success");
     setTimeout(() => {
       window.open("PagInicial.html","_self");
@@ -622,6 +632,23 @@ async function subirsolucion() {
   }
 }
 
+// Se sube los comentarios, FALTA MOSTRARLOS Y VINCULARLOS CON EL RETO. PENSAR SI SE HACE EL BOTON DE BORRAR
+async function commentBox(){
+  var idNombre = JSON.parse(localStorage.getItem("nomUsuario"))
+  var comentary = document.getElementById("Comentario").value
+  var ComReto = JSON.parse(localStorage.getItem("reto"))
+
+  if (comentary.length == 0) {
+    swal("Error!", "Llena todos los campos de textos!", "error");
+  }else {
+    db.collection("Comentario").doc().set({
+      idNombre, comentary, ComReto 
+    })
+    console.log("Funciona");
+
+  }
+
+}
 
 function uploadRetoPdf() {
   try {
