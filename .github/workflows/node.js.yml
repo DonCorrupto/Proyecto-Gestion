@@ -5,9 +5,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "ramaUpdate" ]
+    branches: [ "ramaUpdate-1" ]
   pull_request:
-    branches: [ "ramaUpdate" ]
+    branches: [ "ramaUpdate-1" ]
 
 jobs:
   build:
