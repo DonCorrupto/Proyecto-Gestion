@@ -1,7 +1,22 @@
 {
+  "name": "innovacion-abierta",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index2.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index2.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DonCorrupto/Proyecto-Gestion.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DonCorrupto/Proyecto-Gestion/issues"
+  },
+  "homepage": "https://github.com/DonCorrupto/Proyecto-Gestion#readme",
   "dependencies": {
     "express": "^4.18.1"
   }
