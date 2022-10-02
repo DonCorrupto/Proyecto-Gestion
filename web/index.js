@@ -2,7 +2,6 @@
 //BUSCADOR, PERFIL CON LOS RETOS SUBIDOS
 // AGREGAR COMENTARIOS A LOS RETOS, CUALQUIERA PUEDE SUBIR LOS COMENTARIOS
 
-
 let db = firebase.firestore();
 let auth = firebase.auth();
 
@@ -519,9 +518,7 @@ async function cuentaNueva(){
 }
 
 // Iniciar sesion
-
-
-async function btniniciarSesion(){
+ async function btniniciarSesion(){
   const email = document.getElementById("singemail").value;
   const password = document.getElementById("singpassword").value;
 
@@ -545,7 +542,6 @@ async function btniniciarSesion(){
     setTimeout(() => {
       window.open("PagInicial.html","_self");
     }, 2000);
-    // ...
   })
   .catch((error) => {
     var errorCode = error.code;
@@ -760,6 +756,3 @@ function subirImagen(){
     swal("Error!", E, "warning");
   }
 }
-
-
-
