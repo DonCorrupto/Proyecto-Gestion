@@ -4,7 +4,7 @@
   "description": "",
   "main": "index2.js",
   "scripts": {
-    "test": "jest --verbose",
+    "test": "jest",
     "start": "node index2.js"
   },
   "repository": {
