@@ -521,6 +521,7 @@ async function cuentaNueva(){
  async function btniniciarSesion(){
   const email = document.getElementById("singemail").value;
   const password = document.getElementById("singpassword").value;
+  var boolean = false;
 
   auth.signInWithEmailAndPassword(email, password)
   .then((userCredential) => {
@@ -535,6 +536,10 @@ async function cuentaNueva(){
         const dataNom = docNombre.data();
         if (user.uid == docNombre.id) {
           localStorage.setItem("nomUsuario", JSON.stringify(dataNom.nombreUser));
+          boolean = true;
+          test('Resultado true', () => {
+            expect(isTrue()).toBeTruthy();
+        });
         }
       })
     })
