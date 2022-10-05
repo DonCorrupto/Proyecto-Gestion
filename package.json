@@ -6,7 +6,9 @@
   "scripts": {
     "test": "jest",
     "start": "node index2.js",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "cypress:open": "cypress open",
+    "test:run": "cypress run"
   },
   "repository": {
     "type": "git",
