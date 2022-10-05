@@ -1,4 +1,5 @@
 module.exports = {
+<<<<<<< HEAD
 	"env": {
 		"browser": true,
 		"es2021": true,
@@ -31,3 +32,23 @@ module.exports = {
 		]
 	}
 };
+=======
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": "eslint:recommended",
+    "overrides": [
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+    },
+    "rules": {
+    }
+}
+
+
+
+>>>>>>> e84a0774005c6020fdfda78e794a027b9f8903be

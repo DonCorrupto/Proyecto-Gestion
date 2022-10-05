@@ -6,3 +6,5 @@ class ValidaEmail{
   }
   
   module.exports = new ValidaEmail();
+
+//  export const isTrue = () => true;
