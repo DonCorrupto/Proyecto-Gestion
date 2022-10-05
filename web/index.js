@@ -48,19 +48,19 @@ window.addEventListener("DOMContentLoaded", async (e) => {
 
       db.collection("Usuario").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          if(JSON.parse(localStorage.getItem("usuario")) == doc.id){
-            document.getElementById("nombreUsuario").innerHTML=`${doc.data().nombreUser} ${doc.data().apellidoUser}`;
+          if (JSON.parse(localStorage.getItem("usuario")) == doc.id) {
+            document.getElementById("nombreUsuario").innerHTML = `${doc.data().nombreUser} ${doc.data().apellidoUser}`;
           }
         })
       })
 
       const btnsLeermas = document.querySelectorAll('.btn-leer');
       btnsLeermas.forEach(btn => {
-        btn.addEventListener('click', async (e) =>{
+        btn.addEventListener('click', async (e) => {
           idReto = e.target.dataset.id;
           //console.log(idReto);
           guardar_id_localstorage(idReto);
-          window.open("Pagina_Retos.html","_self");
+          window.open("Pagina_Retos.html", "_self");
         })
       })
     })
@@ -86,7 +86,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
       //console.log(usuar);
 
       //Solo muestra los botones al dueño del reto
-      if (guardar == data.id && usuar == data.usua){
+      if (guardar == data.id && usuar == data.usua) {
         Pagina_Retos.innerHTML += `
           <div class="secciones">
             <div class="info-reto">
@@ -112,8 +112,8 @@ window.addEventListener("DOMContentLoaded", async (e) => {
 
         db.collection("Usuario").get().then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
-            if(JSON.parse(localStorage.getItem("usuario")) == doc.id){
-              document.getElementById("nombreUsuario").innerHTML=`${doc.data().nombreUser}${doc.data().apellidoUser}`;
+            if (JSON.parse(localStorage.getItem("usuario")) == doc.id) {
+              document.getElementById("nombreUsuario").innerHTML = `${doc.data().nombreUser}${doc.data().apellidoUser}`;
             }
           })
         })
@@ -126,7 +126,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
             dataCom.id = docComentary.id;
             var ComRetoId = JSON.parse(localStorage.getItem("reto"))
             if (ComRetoId == docComentary.data().ComReto) {
-              ComentarioPaginaRetos.innerHTML +=`
+              ComentarioPaginaRetos.innerHTML += `
               <div>
                 <h4>${dataCom.idNombre}</h4>
                 <p>${dataCom.comentary}</p>
@@ -162,7 +162,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
             }
           })
         })
-  
+
         //mostrar avance en la pagina principal
         onGetDataAvance((querySnapshot) => {
           querySnapshot.forEach((docAvance) => {
@@ -193,17 +193,17 @@ window.addEventListener("DOMContentLoaded", async (e) => {
             }
           })
         })
-  
+
         const btnsDelete = document.querySelectorAll('.btn-borrar');
         btnsDelete.forEach(btn => {
           btn.addEventListener('click', async (e) => {
             //console.log(e.target.dataset.id)
             await deleteReto(e.target.dataset.id)
-            window.open("PagInicial.html","_self");
+            window.open("PagInicial.html", "_self");
           })
         })
-  
-  
+
+
         const btnsSolucion = document.querySelectorAll('.btn-solucion');
         btnsSolucion.forEach(btn => {
           btn.addEventListener('click', async (e) => {
@@ -212,10 +212,10 @@ window.addEventListener("DOMContentLoaded", async (e) => {
             //console.log(idReto);
             guardar_id_localstorage(idReto);
             obtener_localstorage();
-            window.open("SubirSolucion.html","_self")
+            window.open("SubirSolucion.html", "_self")
           })
         })
-  
+
         const btnsAvance = document.querySelectorAll('.btn-avance');
         btnsAvance.forEach(btn => {
           btn.addEventListener('click', async (e) => {
@@ -224,10 +224,10 @@ window.addEventListener("DOMContentLoaded", async (e) => {
             //console.log(idReto);
             guardar_id_localstorage(idReto);
             obtener_localstorage();
-            window.open("subiravance.html","_self")
+            window.open("subiravance.html", "_self")
           })
         })
-  
+
         //Editar Reto
         const btnsEditar = document.querySelectorAll('.btn-editar');
         btnsEditar.forEach(btn => {
@@ -240,13 +240,13 @@ window.addEventListener("DOMContentLoaded", async (e) => {
             //console.log(nombre, descripcion, institucion, representante);
             //console.log(doc.id);
             guardarInfoReto(doc.id, nombre, descripcion, representante, institucion);
-            window.open("editarReto.html","_self")
+            window.open("editarReto.html", "_self")
           })
         })
       }
 
       // Solo para mostrar a los demas usuarios
-      if (guardar == data.id && usuar != data.usua){
+      if (guardar == data.id && usuar != data.usua) {
         Pagina_Retos.innerHTML += `
           <div class="secciones">
             <div class="info-reto">
@@ -266,8 +266,8 @@ window.addEventListener("DOMContentLoaded", async (e) => {
 
         db.collection("Usuario").get().then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
-            if(JSON.parse(localStorage.getItem("usuario")) == doc.id){
-              document.getElementById("nombreUsuario").innerHTML=`${doc.data().nombreUser}${doc.data().apellidoUser}`;
+            if (JSON.parse(localStorage.getItem("usuario")) == doc.id) {
+              document.getElementById("nombreUsuario").innerHTML = `${doc.data().nombreUser}${doc.data().apellidoUser}`;
             }
           })
         })
@@ -280,7 +280,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
             dataCom.id = docComentary.id;
             var ComRetoId = JSON.parse(localStorage.getItem("reto"))
             if (ComRetoId == docComentary.data().ComReto) {
-              ComentarioPaginaRetos.innerHTML +=`
+              ComentarioPaginaRetos.innerHTML += `
               <div>
                 <h4>${dataCom.idNombre}</h4>
                 <p>${dataCom.comentary}</p>
@@ -314,7 +314,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
             }
           })
         })
-  
+
         //mostrar avance en la pagina principal
         onGetDataAvance((querySnapshot) => {
           querySnapshot.forEach((docAvance) => {
@@ -342,17 +342,17 @@ window.addEventListener("DOMContentLoaded", async (e) => {
             }
           })
         })
-  
+
         const btnsDelete = document.querySelectorAll('.btn-borrar');
         btnsDelete.forEach(btn => {
           btn.addEventListener('click', async (e) => {
             //console.log(e.target.dataset.id)
             await deleteReto(e.target.dataset.id)
-            window.open("PagInicial.html","_self")
+            window.open("PagInicial.html", "_self")
           })
         })
-  
-  
+
+
         const btnsSolucion = document.querySelectorAll('.btn-solucion');
         btnsSolucion.forEach(btn => {
           btn.addEventListener('click', async (e) => {
@@ -361,10 +361,10 @@ window.addEventListener("DOMContentLoaded", async (e) => {
             //console.log(idReto);
             guardar_id_localstorage(idReto);
             obtener_localstorage();
-            window.open("SubirSolucion.html","_self")
+            window.open("SubirSolucion.html", "_self")
           })
         })
-  
+
         const btnsAvance = document.querySelectorAll('.btn-avance');
         btnsAvance.forEach(btn => {
           btn.addEventListener('click', async (e) => {
@@ -373,10 +373,10 @@ window.addEventListener("DOMContentLoaded", async (e) => {
             //console.log(idReto);
             guardar_id_localstorage(idReto);
             obtener_localstorage();
-            window.open("subiravance.html","_self")
+            window.open("subiravance.html", "_self")
           })
         })
-  
+
         //Editar Reto
         const btnsEditar = document.querySelectorAll('.btn-editar');
         btnsEditar.forEach(btn => {
@@ -389,12 +389,12 @@ window.addEventListener("DOMContentLoaded", async (e) => {
             //console.log(nombre, descripcion, institucion, representante);
             //console.log(doc.id);
             guardarInfoReto(doc.id, nombre, descripcion, representante, institucion);
-            window.open("editarReto.html","_self")
+            window.open("editarReto.html", "_self")
           })
         })
       }
 
-      
+
     })
   })
 })
@@ -409,13 +409,13 @@ function obtener_localstorage() {
     var reto = JSON.parse(localStorage.getItem("reto"));
     return reto
   } else {
-    console.log("No hay entradas en el local storage retoid");
+    //console.log("No hay entradas en el local storage retoid");
     return false
   }
 }
 
 let guardar = obtener_localstorage();
-        
+
 
 function guardarInfoReto(id, nombre, descripcion, representante, institucion) {
   var infoReto = {
@@ -449,7 +449,7 @@ institucionE.value = local.institucion;
 const updateReto = (id, updateReto) =>
   db.collection("Reto").doc(id).update(updateReto);
 
-  let idEditar = local.id;
+let idEditar = local.id;
 
 async function editarReto() {
 
@@ -458,7 +458,7 @@ async function editarReto() {
     var descripcion = document.getElementById("descripcionEditar").value
     var representante = document.getElementById("nombrerepresentanteEditar").value
     var institucion = document.getElementById("institucionEmpresaEditar").value
-    if (nombre.length == 0 ||descripcion.length == 0 ||representante.length == 0 ||institucion.length == 0) {
+    if (nombre.length == 0 || descripcion.length == 0 || representante.length == 0 || institucion.length == 0) {
       swal("Error!", "No se editó el reto correctamente, intentalo de nuevo. Asegurate de llenar todos los campos de textos.!", "error");
     } else {
       await updateReto(idEditar, {
@@ -469,7 +469,7 @@ async function editarReto() {
       })
       swal("Excelente!", "Se ha editado el reto!", "success");
       setTimeout(() => {
-        window.open("Pagina_Retos.html","_self");
+        window.open("Pagina_Retos.html", "_self");
       }, 2000);
     }
   } catch (e) {
@@ -479,10 +479,10 @@ async function editarReto() {
 
 
 async function btnCrear() {
-  window.open("CrearCuenta.html","_self")
+  window.open("CrearCuenta.html", "_self")
 }
 
-async function cuentaNueva(){
+async function cuentaNueva() {
 
   const email = document.getElementById("txtemailCrear").value;
   const password = document.getElementById("txtpasswordCrear").value;
@@ -499,9 +499,9 @@ async function cuentaNueva(){
       })
 
       swal("Éxito!", "Cuenta ha sido creada!", "success");
-      
+
       setTimeout(() => {
-        window.open("index.html","_self");
+        window.open("index.html", "_self");
       }, 2000);
 
       // ...
@@ -518,47 +518,47 @@ async function cuentaNueva(){
 }
 
 // Iniciar sesion
- async function btniniciarSesion(){
+async function btniniciarSesion() {
   const email = document.getElementById("singemail").value;
   const password = document.getElementById("singpassword").value;
 
   auth.signInWithEmailAndPassword(email, password)
-  .then((userCredential) => {
-    // Signed in
-    var user = userCredential.user;
-    //console.log(user.uid);
-    //alert("Inicio de Sesión con exito");
+    .then((userCredential) => {
+      // Signed in
+      var user = userCredential.user;
+      //console.log(user.uid);
+      //alert("Inicio de Sesión con exito");
 
-    localStorage.setItem("usuario", JSON.stringify(user.uid));
-    onGetDataNombre((querySnapshotNombre) => {
-      querySnapshotNombre.forEach((docNombre) => {
-        const dataNom = docNombre.data();
-        if (user.uid == docNombre.id) {
-          localStorage.setItem("nomUsuario", JSON.stringify(dataNom.nombreUser));
-        }
+      localStorage.setItem("usuario", JSON.stringify(user.uid));
+      onGetDataNombre((querySnapshotNombre) => {
+        querySnapshotNombre.forEach((docNombre) => {
+          const dataNom = docNombre.data();
+          if (user.uid == docNombre.id) {
+            localStorage.setItem("nomUsuario", JSON.stringify(dataNom.nombreUser));
+          }
+        })
       })
+      swal("Bienvenido!", "Inicio de sesión con exito!", "success");
+      setTimeout(() => {
+        window.open("PagInicial.html", "_self");
+      }, 2000);
     })
-    swal("Bienvenido!", "Inicio de sesión con exito!", "success");
-    setTimeout(() => {
-      window.open("PagInicial.html","_self");
-    }, 2000);
-  })
-  .catch((error) => {
-    var errorCode = error.code;
-    var errorMessage = error.message;
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
 
-    swal("Error!", errorMessage, "error");
-    //alert(errorMessage);
-  });
+      swal("Error!", errorMessage, "error");
+      //alert(errorMessage);
+    });
 
 }
 
-async function linkLogout(){
+async function linkLogout() {
 
   window.localStorage.clear();
   firebase.auth().signOut().then(() => {
     // Sign-out successful.
-    window.open("index.html","_self");
+    window.open("index.html", "_self");
   }).catch((error) => {
     // An error happened.
     alert("Error");
@@ -580,7 +580,7 @@ async function subirreto() {
 
     swal("Cargando!", "", "info");
 
-    if (nombre.length == 0 ||descripcion.length == 0 ||representante.length == 0 ||institucion.length == 0) {
+    if (nombre.length == 0 || descripcion.length == 0 || representante.length == 0 || institucion.length == 0) {
       swal("Error!", "LLena todos los campos de textos!", "error");
     } else {
       db.collection("Reto").doc().set({
@@ -589,7 +589,7 @@ async function subirreto() {
       swal("Grandioso!", "El reto se ha subido correctamente!", "success");
       //alert("Se ha subido el reto");
       setTimeout(() => {
-        window.open("PagInicial.html","_self");
+        window.open("PagInicial.html", "_self");
       }, 2000);
     }
   } catch (e) {
@@ -619,7 +619,7 @@ async function subiravance() {
         //alert("Se ha subido el avance");
         swal("Grandioso!", "Se ha subido el avance!", "success");
         setTimeout(() => {
-          window.open("Pagina_Retos.html","_self");
+          window.open("Pagina_Retos.html", "_self");
         }, 2000);
       }
     }
@@ -642,7 +642,7 @@ async function subirsolucion() {
       uploadRetoPdf()
 
       swal("Cargando!", "", "info");
-      
+
       if (nombre.length == 0 || descripcion.length == 0) {
         swal("Error!", "LLena todos los campos de textos!", "error");
       } else {
@@ -652,7 +652,7 @@ async function subirsolucion() {
         //alert("Se ha subido la Solución");
         swal("Grandioso!", "Se ha subido la solución!", "success");
         setTimeout(() => {
-          window.open("Pagina_Retos.html","_self");
+          window.open("Pagina_Retos.html", "_self");
         }, 2000);
       }
     }
@@ -664,16 +664,16 @@ async function subirsolucion() {
   }
 }
 
-async function commentBox(){
+async function commentBox() {
   var idNombre = JSON.parse(localStorage.getItem("nomUsuario"))
   var comentary = document.getElementById("comentary").value
   var ComReto = JSON.parse(localStorage.getItem("reto"))
 
   if (comentary.length == 0) {
     swal("Error!", "Llena todos los campos de textos!", "error");
-  }else {
+  } else {
     db.collection("Comentario").doc().set({
-      idNombre, comentary, ComReto 
+      idNombre, comentary, ComReto
     })
     setTimeout(() => {
       location.reload()
@@ -721,7 +721,7 @@ function uploadRetoPdf() {
 }
 
 
-function subirImagen(){
+function subirImagen() {
   try {
     console.log("cargando...")
     //swal("Cargando!", "", "info");
