@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "start": "node index2.js",
-    "lint": "eslint .",
+    "lint": "eslint --ext .js,.firebase . --fix",
     "cypress:open": "cypress open",
     "test:run": "cypress run"
   },

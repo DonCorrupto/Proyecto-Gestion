@@ -8,13 +8,13 @@ import { getFirestore } from "firebase/firestore";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAcyTq4dkGo9bwh_fMc-FZvnaI5nCAZ4eY",
-  authDomain: "pagina-web-38ea7.firebaseapp.com",
-  projectId: "pagina-web-38ea7",
-  storageBucket: "pagina-web-38ea7.appspot.com",
-  messagingSenderId: "608673882636",
-  appId: "1:608673882636:web:ba697b21e0ad2f1ec18429",
-  measurementId: "G-2LBNHY0GMP"
+	apiKey: "AIzaSyAcyTq4dkGo9bwh_fMc-FZvnaI5nCAZ4eY",
+	authDomain: "pagina-web-38ea7.firebaseapp.com",
+	projectId: "pagina-web-38ea7",
+	storageBucket: "pagina-web-38ea7.appspot.com",
+	messagingSenderId: "608673882636",
+	appId: "1:608673882636:web:ba697b21e0ad2f1ec18429",
+	measurementId: "G-2LBNHY0GMP"
 };
 
 // Initialize Firebase
