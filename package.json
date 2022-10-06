@@ -9,7 +9,7 @@
     "start": "node index2.js",
     "cypress:open": "cypress open",
     "test:run": "cypress run",
-    "lint": "eslint --ext .js,.firebase . --fix"
+    "lint": "eslint --ext .js . --fix"
   },
   "repository": {
     "type": "git",
