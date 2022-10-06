@@ -29,6 +29,6 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
-    - run: npm run lint
-    #- run: npm run cypress:open
+    - run: npm run lint 
+    #- run: npm run cypress:open SMOKE TEST
 

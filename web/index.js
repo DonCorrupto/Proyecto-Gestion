@@ -517,11 +517,11 @@ async function cuentaNueva() {
 		});
 }
 
+
 // Iniciar sesion
 async function btniniciarSesion() {
 	const email = document.getElementById("singemail").value;
 	const password = document.getElementById("singpassword").value;
-	var boolean = false;
 
 	auth.signInWithEmailAndPassword(email, password)
 		.then((userCredential) => {
