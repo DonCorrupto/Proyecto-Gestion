@@ -1,4 +1,4 @@
-name: Create Docker Image
+name: Update Docker Image
 
 on:
   workflow_run:
